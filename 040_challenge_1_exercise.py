@@ -25,7 +25,25 @@ from lib.helpers import check_that_these_are_equal
 # "These words are quite long: nonbiological, antidisestablis..."
 
 # @TASK: Complete this exercise.
-
+def report_long_words(words):
+    # Filter out words longer than 10 characters and do not contain a hyphen
+    long_words = [word for word in words if len(word) > 10 and '-' not in word]
+    
+    # Process the words
+    processed_words = []
+    for word in long_words:
+        if len(word) > 15:
+            processed_words.append(word[:15] + '...')
+        else:
+            processed_words.append(word)
+    
+    # Create the final report
+    if processed_words:
+        report = "These words are quite long: " + ', '.join(processed_words)
+    else:
+        report = "These words are quite long: "
+    
+    return report
 print("")
 print("Function: report_long_words")
 
